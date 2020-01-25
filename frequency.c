@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<ctype.h>
 #include"frequency.h"
-#define NUM_LETTERS ((int)26)
+#define NUM_LETTERS 26
 
 typedef enum {FALSE=0, TRUE=1} boolean;
 typedef struct Node 
@@ -18,10 +18,10 @@ Node;
 Node* createNode(char ch)
 {
    Node* n;
+   n = (Node*)malloc(sizeof(Node));
    n->letter = ch;
    n->count = 0;
    n->isEndOfWord = FALSE;
-   n = (Node*)malloc(sizeof(Node));
    for(int i=0 ; i<NUM_LETTERS ; i++){
        n->exsist[i] = 0;
    }
