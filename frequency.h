@@ -2,22 +2,22 @@
 #define FREQUENCY_H
 #define NUM_LETTERS 26
 
-	typedef struct Node node;
+	typedef struct Node Node;
 
-	node* createNode(char ch);
+	Node* createNode(char ch);
 
-    node* addChild(node *node, char letter);
+    Node* addChild(Node *node, char letter);
 
-    void incremental(node* root);
+    void incremental(Node* root);
     
-    void freeNode(node* root);
+    void freeNode(Node* root);
 
-    int hasChilds(node* n);
+    int hasChilds(Node* n);
 
-	void freeTree(node* root);
+	void freeTree(Node* root);
 
-    void printTree(node* root, char *str, int j);
+    void printTree(Node* root, char *str, int j);
 
-	void printTreeReverse(node* root, char *str, int j);
+	void printTreeReverse(Node* root, char *str, int j);
 
 #endif

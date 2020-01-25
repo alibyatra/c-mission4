@@ -5,34 +5,34 @@
 #define NUM_LETTERS ((int)26)
 
 typedef enum {FALSE=0, TRUE=1} boolean;
-typedef struct node 
+typedef struct Node 
 {
 char letter;
 long unsigned int count;
-struct node* children[NUM_LETTERS];
+struct Node* children[NUM_LETTERS];
 char exsist[NUM_LETTERS];
 boolean isEndOfWord;
 }
-node;
+Node;
 
-node* createNode(char ch)
+Node* createNode(char ch)
 {
-   node* n;
+   Node* n;
    n->letter = ch;
    n->count = 0;
    n->isEndOfWord = FALSE;
-   n = (node*)malloc(sizeof(node));
+   n = (Node*)malloc(sizeof(Node));
    for(int i=0 ; i<NUM_LETTERS ; i++){
        n->exsist[i] = 0;
    }
    return n;
 }
 
-node* addChild(node *root, char letter)
+Node* addChild(Node *root, char letter)
 {
 	if(root->exsist[letter-'a'] == 0)
 	{
-			node *newNode = createNode(letter);
+			Node *newNode = createNode(letter);
 			root->exsist[letter-'a'] = 1;
 			root->children[letter-'a'] = newNode;
 			return newNode;
@@ -40,12 +40,12 @@ node* addChild(node *root, char letter)
 	return (root->children[letter-'a']);
 }
 
-void incremental(node* root)
+void incremental(Node* root)
 {
 	root->count++;
 }
 
-int hasChilds(node* n)
+int hasChilds(Node* n)
 {
 	int i;
 	for (i=0; i<NUM_LETTERS; i++)
@@ -55,7 +55,7 @@ int hasChilds(node* n)
 	return 0;
 }
 
-void freeTree(node* root)
+void freeTree(Node* root)
 {
 	int i;
 
@@ -79,7 +79,7 @@ void freeTree(node* root)
 	}   
 }
 
-void printTree(node* root, char *str, int j)
+void printTree(Node* root, char *str, int j)
 {
 	if (hasChilds(root)==0)
 	{
@@ -103,7 +103,7 @@ void printTree(node* root, char *str, int j)
 	}
 }
 
-void printTreeReverse(node* root, char *str, int j)
+void printTreeReverse(Node* root, char *str, int j)
 {
 	if (hasChilds(root)==0)
 	{

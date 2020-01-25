@@ -8,14 +8,14 @@ int main(int argc, char const *argv[])
 	char choose= 't'; 
 	int i=0; 
 	int max=0; 
-	node *root= createNode('\0');
-	node *temp = root; 
+	Node *root= createNode('\0');
+	Node *temp = root; 
 
 	while ((buffer=getc(stdin)) != EOF)
 	{
 		if ((buffer >= 'a' && buffer <= 'z') || (buffer >= 'A' && buffer <= 'Z'))
 		{	
-			temp = insert(temp, tolower(buffer));
+			temp = addChild(temp, tolower(buffer));
 			i++;
 		}
 		else if (buffer == ' ' || buffer == '\n' || buffer == '\t')
